@@ -8,8 +8,8 @@ import { Database } from "./db";
 
 const handler = {
   async fetch(request, env): Promise<Response> {
-    const id = env.BROWSER.idFromName("browser");
-    const obj = env.BROWSER.get(id);
+const id = env.BROWSER.idFromName("browser"); // Durable Object
+const obj = env.BROWSER.get(id);
 
     const { success } = await env.RATE_LIMITER.limit({ key: "/" });
     if (!success) {
