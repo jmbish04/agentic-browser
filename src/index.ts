@@ -8,8 +8,8 @@ import { Database } from "./db";
 
 const handler = {
   async fetch(request, env): Promise<Response> {
-const id = env.BROWSER.idFromName("browser"); // Durable Object
-const obj = env.BROWSER.get(id);
+const id = env.DURABLE_OBJECT_BROWSER.idFromName("browser"); // Durable Object
+const obj = env.DURABLE_OBJECT_BROWSER.get(id);
 
     const { success } = await env.RATE_LIMITER.limit({ key: "/" });
     if (!success) {
@@ -85,6 +85,7 @@ export class Browser {
     if (!this.browser || !this.browser.isConnected()) {
       log(`Starting new browser instance`);
       try {
+        log(`this.env.MYBROWSER: ${this.env.MYBROWSER}`);
         this.browser = await puppeteer.launch(this.env.MYBROWSER); // not env.BROWSER
         log(`Launch result: ${this.browser ? "✅ browser created" : "❌ browser is undefined"}`);
       } catch (e) {
