@@ -27,12 +27,12 @@ new_classes = ["Browser"]
 
 [vars]
 # ACCOUNT_ID="fa3e82d8258ac121c26085c2a5952780" # replace with yours
-SERVICE_NAME = "cloudflare-agentic-ai-browser"
+SERVICE_NAME = "cloudflare-agentic-ai-browser-v2"
 
 # Baselime integration
 logpush = true
 tail_consumers = [
-  { service = "cloudflare-agentic-ai-browser-tail", environment = "undefined" }
+  { service = "cloudflare-agentic-ai-browser-v2-tail", environment = "production" }
 ]
 
 [[d1_databases]]
@@ -46,7 +46,7 @@ name = "RATE_LIMITER"
 type = "ratelimit"
 # An identifier you define, that is unique to your Cloudflare account.
 # Must be an integer.
-namespace_id = "1001"
+namespace_id = "1002"
 
 # Limit: the number of tokens allowed within a given period in a single
 # Cloudflare location
