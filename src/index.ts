@@ -95,7 +95,12 @@ export class Browser {
     this.keptAliveInSeconds = 0;
     this.state.waitUntil(
       (async () => {
-        const page = await this.browser.newPage();
+        if (!this.browser) {
+  log("Browser instance was not created successfully.");
+  writer.close();
+  return new Response(readable, { status: 500 });
+}
+const page = await this.browser.newPage();
         await page.setViewport({ width, height });
         page.setDefaultNavigationTimeout(10000);
         page.setDefaultTimeout(10000);
