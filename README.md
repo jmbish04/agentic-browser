@@ -38,7 +38,7 @@ npx wrangler d1 execute ai-agent-jobs --remote --file=migrations/0000_init.sql
 pnpm run deploy
 
 curl -X POST \
-  <URL to your deployed worker> \
+  https://agentic-browser.YOUR_DOMAIN.workers.dev \
   -d '{"baseUrl": "https://chatwithcloud.ai", "goal": "Extract pricing data" }' \ # Replace with your URL and goal
   --no-buffer
 ```
