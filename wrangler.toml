@@ -27,12 +27,12 @@ new_classes = ["Browser"]
 
 [vars]
 # ACCOUNT_ID="fa3e82d8258ac121c26085c2a5952780" # replace with yours
-SERVICE_NAME = "cloudflare-agentic-ai-browser-v2"
+SERVICE_NAME = "agentic-browser"
 
 # Baselime integration
 logpush = true
 tail_consumers = [
-  { service = "cloudflare-agentic-ai-browser-v2-tail", environment = "production" }
+  { service = "agentic-browser-tail", environment = "production" }
 ]
 
 [[d1_databases]]
