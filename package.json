@@ -17,6 +17,7 @@
     "openai": "^4.51.0"
   },
   "devDependencies": {
+    "typescript": "^5.4.0",
     "@cloudflare/puppeteer": "^0.0.11",
     "@cloudflare/workers-types": "^4.20240614.0",
     "@types/node": "^20.5.7",
