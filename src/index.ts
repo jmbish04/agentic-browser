@@ -85,9 +85,10 @@ export class Browser {
     if (!this.browser || !this.browser.isConnected()) {
       log(`Starting new browser instance`);
       try {
-        this.browser = await puppeteer.launch(this.env.MYBROWSER);
+        this.browser = await puppeteer.launch(this.env.BROWSER);
+        log(`Launch result: ${this.browser ? "✅ browser created" : "❌ browser is undefined"}`);
       } catch (e) {
-        log(`Could not start browser instance. Error: ${e}`);
+        log(`❌ Failed to launch browser: ${e.message}`);
       }
     }
 
