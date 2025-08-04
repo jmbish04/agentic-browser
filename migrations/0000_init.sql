@@ -1,4 +1,4 @@
-CREATE TABLE `jobs` (
+CREATE TABLE IF NOT EXISTS `jobs` (
 	`id` integer PRIMARY KEY NOT NULL,
 	`goal` text NOT NULL,
 	`starting_url` text NOT NULL,
