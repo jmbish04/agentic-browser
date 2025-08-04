@@ -9,7 +9,10 @@ compatibility_flags = [ "nodejs_compat"]
 enabled = true
 
 # ✅ Bind the Cloudflare browser rendering service
-browser = { binding = "MYBROWSER" }
+# browser = { binding = "MYBROWSER" }
+[[unsafe.bindings]]
+type = "browser"
+name = "MYBROWSER"
 
 # Bind an R2 Bucket
 [[r2_buckets]]
