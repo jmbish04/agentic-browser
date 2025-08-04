@@ -45,8 +45,6 @@ database_id = "2ca639bf-b86c-4c0f-a172-42f9ccb57875"
 [[unsafe.bindings]]
 name = "RATE_LIMITER"
 type = "ratelimit"
-# An identifier you define, that is unique to your Cloudflare account.
-# Must be an integer.
 namespace_id = "1002"
 
 # Limit: the number of tokens allowed within a given period in a single
