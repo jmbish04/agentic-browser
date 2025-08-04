@@ -8,7 +8,8 @@ compatibility_flags = [ "nodejs_compat"]
 [observability.logs]
 enabled = true
 
-browser = { binding = "BROWSER" }
+# ✅ Bind the Cloudflare browser rendering service
+browser = { binding = "MYBROWSER" }
 
 # Bind an R2 Bucket
 [[r2_buckets]]
@@ -16,7 +17,7 @@ binding = "BUCKET"
 bucket_name = "screenshots"
 preview_bucket_name = "screenshots-test"
 
-# Binding to a Durable Object
+# ✅ Bind your own Durable Object class
 [[durable_objects.bindings]]
 name = "BROWSER"
 class_name = "Browser"
