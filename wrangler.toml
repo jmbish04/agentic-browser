@@ -1,8 +1,12 @@
 #:schema node_modules/wrangler/config-schema.json
-name = "cloudflare-agentic-ai-browser"
+name = "cloudflare-agentic-ai-browser-v2"
 main = "src/index.ts"
 compatibility_date = "2024-06-14"
 compatibility_flags = [ "nodejs_compat"]
+
+# wrangler.toml (wrangler v3.88.0^)
+[observability.logs]
+enabled = true
 
 browser = { binding = "MYBROWSER" }
 
@@ -22,7 +26,7 @@ tag = "v1"
 new_classes = ["Browser"]
 
 [vars]
-ACCOUNT_ID="fa3e82d8258ac121c26085c2a5952780" # replace with yours
+# ACCOUNT_ID="fa3e82d8258ac121c26085c2a5952780" # replace with yours
 SERVICE_NAME = "cloudflare-agentic-ai-browser"
 
 # Baselime integration
@@ -34,7 +38,7 @@ tail_consumers = [
 [[d1_databases]]
 binding = "DB" 
 database_name = "ai-agent-jobs"
-database_id = "d7990af5-2803-4c69-8697-ffc0f8052ddd"
+database_id = "2ca639bf-b86c-4c0f-a172-42f9ccb57875"
 
 # The rate limiting API is in open beta.
 [[unsafe.bindings]]
