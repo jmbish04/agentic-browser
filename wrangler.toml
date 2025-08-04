@@ -19,7 +19,7 @@ preview_bucket_name = "screenshots-test"
 
 # ✅ Bind your own Durable Object class
 [[durable_objects.bindings]]
-name = "BROWSER"
+name = "DURABLE_OBJECT_BROWSER"
 class_name = "Browser"
 
 [[migrations]]
