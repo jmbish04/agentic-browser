@@ -32,6 +32,7 @@ new_classes = ["Browser"]
 [vars]
 # ACCOUNT_ID="fa3e82d8258ac121c26085c2a5952780" # replace with yours
 SERVICE_NAME = "agentic-browser"
+BROWSER_RENDERING_TOKEN = ""
 
 # Baselime integration
 logpush = true

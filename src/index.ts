@@ -5,11 +5,26 @@ import { tools } from "./tools";
 import { systemPrompt } from "./prompts";
 import { getCleanHtml, removeHtmlsFromMessages } from "./utils";
 import { Database } from "./db";
+import { routes, RoutePath } from "./browser-rendering";
 
 const handler = {
   async fetch(request, env): Promise<Response> {
-const id = env.DURABLE_OBJECT_BROWSER.idFromName("browser"); // Durable Object
-const obj = env.DURABLE_OBJECT_BROWSER.get(id);
+    const url = new URL(request.url);
+
+    if (request.method === "GET" && url.pathname === "/status") {
+      return new Response(
+        JSON.stringify({ ok: true, routes: Object.keys(routes) }),
+        { headers: { "Content-Type": "application/json" } }
+      );
+    }
+
+    const route = routes[url.pathname as RoutePath];
+    if (request.method === "POST" && route) {
+      return route(request, env);
+    }
+
+    const id = env.DURABLE_OBJECT_BROWSER.idFromName("browser"); // Durable Object
+    const obj = env.DURABLE_OBJECT_BROWSER.get(id);
 
     const { success } = await env.RATE_LIMITER.limit({ key: "/" });
     if (!success) {

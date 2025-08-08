@@ -12,6 +12,23 @@ Services used:
 - [Cloudflare D1](https://developers.cloudflare.com/d1/) - store jobs and the logs
 - [Baselime (acquired by Cloudflare)](https://baselime.io/) - tracing using OpenTelemetry & logging
 
+## Browser Rendering REST API
+
+The worker exposes simple POST endpoints that proxy to Cloudflare's [Browser Rendering REST API](https://developers.cloudflare.com/browser-rendering/rest-api/).
+
+| Route       | Description                                  | Example Payload |
+|-------------|----------------------------------------------|-----------------|
+| `/content`  | Return rendered HTML                         | `{ "url": "https://example.com" }` |
+| `/screenshot` | Capture a screenshot (jpg/png)             | `{ "url": "https://example.com" }` |
+| `/pdf`      | Generate a PDF                              | `{ "url": "https://example.com" }` |
+| `/snapshot` | Take advanced snapshot                       | `{ "url": "https://example.com" }` |
+| `/scrape`   | Scrape selectors                             | `{ "url": "https://example.com", "selectors": ["h1"] }` |
+| `/json`     | Capture structured data                      | `{ "url": "https://example.com" }` |
+| `/links`    | List all anchor hrefs                        | `{ "url": "https://example.com" }` |
+| `/markdown` | Return a Markdown representation             | `{ "url": "https://example.com" }` |
+
+All routes accept optional `headers`, `waitForSelector`, and `selectors` fields. GET `/status` returns `{ ok: true, routes: [...] }`.
+
 ![Cloudflare Infra](./diagram.png)
 
 ## Prerequisites
@@ -26,6 +43,7 @@ Services used:
 ```sh
 pnpm i
 npx wrangler secret put OPENAI_API_KEY # and fill with your OpenAI key
+npx wrangler secret put BROWSER_RENDERING_TOKEN # token for Browser Rendering REST API
 # You can also put it inside .dev.vars (copy .dev.vars.template as a reference)
 
 # Run migrations on local SQLite instance
@@ -41,6 +59,14 @@ curl -X POST \
   https://agentic-browser.YOUR_DOMAIN.workers.dev \
   -d '{"baseUrl": "https://chatwithcloud.ai", "goal": "Extract pricing data" }' \ # Replace with your URL and goal
   --no-buffer
+```
+
+### Testing
+
+Run unit tests locally with:
+
+```sh
+pnpm test
 ```
 
 ### The loop
