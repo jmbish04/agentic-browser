@@ -8,7 +8,7 @@ async function callBrowserRendering(
   req: Request,
   env: Env,
 ): Promise<Response> {
-  let payload: any;
+  let payload: { url: string; [key: string]: unknown };
   try {
     payload = await req.json();
   } catch {
