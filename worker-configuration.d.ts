@@ -12,5 +12,5 @@ interface Env {
         DB: D1Database;
         RATE_LIMITER: any;
         MYBROWSER: Fetcher;
-	AI: Ai;
+        AI: Ai;
 }
