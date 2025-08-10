@@ -39,7 +39,7 @@ describe('browser-rendering routes', () => {
 describe('status route', () => {
   it('lists available routes', async () => {
     const req = new Request('http://localhost/status');
-    const res = await handler.fetch(req as any, env as any);
+    const res = await handler.fetch(req as any, env);
     expect(res.status).toBe(200);
     const json = await res.json();
     expect(json.ok).toBe(true);
