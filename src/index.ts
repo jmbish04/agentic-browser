@@ -18,9 +18,9 @@ const handler = {
       );
     }
 
-    const route = routes[url.pathname as RoutePath];
-    if (request.method === "POST" && route) {
-      return route(request, env);
+    const pathname = url.pathname;
+    if (request.method === "POST" && pathname in routes) {
+      return routes[pathname as RoutePath](request, env);
     }
 
     const id = env.DURABLE_OBJECT_BROWSER.idFromName("browser"); // Durable Object
