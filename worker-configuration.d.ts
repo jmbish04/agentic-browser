@@ -2,9 +2,9 @@
 // by running `wrangler types`
 
 interface Env {
-        ACCOUNT_ID: "fa3e82d8258ac121c26085c2a5952780";
-        SERVICE_NAME: "cloudflare-agentic-ai-browser";
-        tail_consumers: [{"service":"cloudflare-agentic-ai-browser-tail"}];
+        ACCOUNT_ID: "b3304b14848de15c72c24a14b0cd187d";
+        SERVICE_NAME: "agentic-browser";
+        tail_consumers: [{"service":"agentic-browser-tail"}];
         OPENAI_API_KEY: string;
         BROWSER_RENDERING_TOKEN: string;
         BROWSER: DurableObjectNamespace;
@@ -13,4 +13,5 @@ interface Env {
         RATE_LIMITER: any;
         MYBROWSER: Fetcher;
         AI: Ai;
+
 }
